@@ -1,0 +1,67 @@
+/* Navigation bar using Flexbox */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+}
+
+.navbar .logo {
+    color: white;
+    font-weight: bold;
+}
+
+.nav-links a {
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Grid Layout */
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 20px;
+}
+
+/* Grid Items */
+.item {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, background-color 0.3s;
+    border-radius: 20px;
+}
+
+/* Different styled items */
+.special {
+    background-color: #ff7e5f;
+}
+
+/* Hover effect */
+.item:hover {
+    background-color: #222;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        grid-template-columns: 1fr; /* Stack items */
+    }
+
+    body {
+        background-color: #f0f8ff;
+    }
+
+    .item {
+        background-color: #007BFF;
+    }
+}

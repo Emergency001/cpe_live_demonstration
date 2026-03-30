@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Events</title>
+    <style>
+        #hoverBox {
+            width: 200px;
+            height: 100px;
+            background-color: lightblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #counter {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .error {
+            color: red;
+        }
+
+        a {
+            color: blue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1><strong>Reg Number:</strong> 23:EG/CO/135</h1>
+
+
+    <h1>Interactive Events Demo</h1>
+
+    <!-- Mouseover box -->
+    <div id="hoverBox">Hover over me!</div>
+
+    <!-- Counter -->
+    <button id="incrementBtn">Increment Counter</button>
+    <div id="counter">0</div>
+
+    <!-- Form -->
+    <form id="emailForm">
+        <input type="text" id="emailInput" placeholder="Enter your email">
+        <button type="submit">Submit</button>
+        <div id="errorMsg" class="error"></div>
+    </form>
+
+    <!-- Timer -->
+    <p id="timerText">This text will change in 5 seconds...</p>
+
+    <!-- Prevent default link -->
+    <a href="https://www.google.com" id="noNavLink">Click me, but stay on this page</a>
+
+    <script>
+        // Change background on hover
+        const hoverBox = document.getElementById("hoverBox");
+        hoverBox.addEventListener("mouseover", () => hoverBox.style.backgroundColor = "lightgreen");
+        hoverBox.addEventListener("mouseout", () => hoverBox.style.backgroundColor = "lightblue");
+
+        // Counter
+        let count = 0;
+        const counterDisplay = document.getElementById("counter");
+        document.getElementById("incrementBtn").addEventListener("click", () => {
+            count++;
+            counterDisplay.textContent = count;
+        });
+
+        // Form validation; hopes it works
+        const form = document.getElementById("emailForm");
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            const email = document.getElementById("emailInput").value;
+            const errorMsg = document.getElementById("errorMsg");
+            if (email.includes("@")) {
+                errorMsg.textContent = "";
+                alert("Email submitted: " + email);
+            } else {
+                errorMsg.textContent = "Please enter a valid email.";
+            }
+        });
+
+        // Timer
+        setTimeout(() => {
+            document.getElementById("timerText").textContent = "Text updated after 5 seconds!";
+        }, 5000);
+
+        // Prevent link from navigating
+        document.getElementById("noNavLink").addEventListener("click", function(event) {
+            event.preventDefault();
+            alert("Navigation stopped!");
+        });
+    </script>
+</body>
+</html>

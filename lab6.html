@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive DOM Manipulation</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+        #para {
+            margin-bottom: 20px;
+        }
+        #myList li {
+            margin: 5px 0;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        #myList li:hover {
+            transform: scale(1.05);
+            color: #ff7e5f;
+        }
+        .toggleBox {
+            background-color: #f9d6d5;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+        }
+        #output {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1><strong>Reg Number:</strong> 23:EG/CO/135</h1>
+
+    <h1 id="title">Original Title</h1>
+    <button onclick="changeTitle()">Change Title</button>
+
+    <!-- Paragraph -->
+    <p id="para">This paragraph will change color dynamically.</p>
+    <button onclick="changeParagraphColor()">Change Color</button>
+
+    <!-- List -->
+    <ul id="myList">
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ul>
+    <button onclick="addListItem()">Add New Item</button>
+
+    <!-- Toggle -->
+    <div class="toggleBox">This box can be hidden or shown.</div>
+    <button onclick="toggleVisibility()">Toggle Box Visibility</button>
+
+    <!-- Form -->
+    <form id="myForm">
+        <input type="text" id="userInput" placeholder="Type something here">
+        <button type="button" onclick="displayInput()">Submit</button>
+    </form>
+    <div id="output"></div>
+
+    <script>
+        function changeTitle() {
+            document.getElementById("title").textContent = "New Title!";
+        }
+
+        function changeParagraphColor() {
+            const para = document.getElementById("para");
+            // Generate a random color
+            const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+            para.style.color = randomColor;
+        }
+
+        function addListItem() {
+            const ul = document.getElementById("myList");
+            const li = document.createElement("li");
+            li.textContent = "New Item " + (ul.children.length + 1);
+            ul.appendChild(li);
+        }
+
+        function toggleVisibility() {
+            const box = document.querySelector(".toggleBox");
+            if (box) box.classList.toggle("hidden");
+        }
+
+        function displayInput() {
+            const input = document.getElementById("userInput").value;
+            const outputDiv = document.getElementById("output");
+            outputDiv.textContent = "You typed: " + input;
+        }
+
+        try {
+            const nonExist = document.getElementById("doesNotExist");
+            nonExist.style.color = "red";
+        } catch (error) {
+            console.error("Error: Tried to access a non-existent element.", error);
+        }
+    </script>
+</body>
+</html>
