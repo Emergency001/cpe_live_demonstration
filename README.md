@@ -51,4 +51,4 @@ Challenges I faced included making the layout adapt nicely to mobile and keeping
 ## How to Use
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/Emergency001/cpe_live_demonstration.git
